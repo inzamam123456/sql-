@@ -1,0 +1,187 @@
+QUERY- create department table;
+CREATE TABLE dept123 (
+    dept_id NUMBER PRIMARY KEY,
+    dept_name VARCHAR2(50) NOT NULL
+    );
+
+
+
+QUERY- create employees table;
+CREATE TABLE employee53 (
+    emp_id NUMBER PRIMARY KEY,
+    emp_name VARCHAR2(50) NOT NULL,
+    dept_id NUMBER,
+    FOREIGN KEY (dept_id) REFERENCES dept123(dept_id)
+);
+
+
+
+QUERY- insert dat in dept table ; 
+INSERT INTO dept123 (dept_id, dept_name) VALUES (1, 'Human Resources');
+INSERT INTO dept123 (dept_id, dept_name) VALUES (2, 'Finance');
+INSERT INTO dept123 (dept_id, dept_name) VALUES (3, 'IT');
+INSERT INTO dept123 (dept_id, dept_name) VALUES (4, 'Marketing');
+
+
+
+QUERY - insert data in employees table ;
+INSERT INTO employee53 (emp_id, emp_name, dept_id) VALUES (1, 'John Doe', 1);
+INSERT INTO employee53 (emp_id, emp_name, dept_id) VALUES (2, 'Jane Smith', 2);
+INSERT INTO employee53 (emp_id, emp_name, dept_id) VALUES (3, 'Alice Johnson', 3);
+INSERT INTO employee53 (emp_id, emp_name, dept_id) VALUES (4, 'Bob Brown', 1);
+INSERT INTO employee53 (emp_id, emp_name, dept_id) VALUES (5, 'Emily Davis', 4);
+
+QUERY- alter table ;
+ALTER TABLE employee53
+ADD email VARCHAR2(100);
+
+
+QUERY- select people where dept id is 1 ;
+SELECT * FROM employee53
+WHERE dept_id = 1;
+
+
+QUERY- to find employees whose names stars with a; (LIKE)
+SELECT * FROM employee53
+WHERE emp_name LIKE 'A%';
+
+QUERY- you could find employees with IDs between 1 and 5;(BETWEEN)
+SELECT * FROM employee53
+WHERE emp_id BETWEEN 1 AND 5;
+
+
+QUERY- To select employees in either department 1 or 3: (IN)
+SELECT * FROM employee53
+WHERE dept_id IN (1, 3);
+
+
+QUERY- To find employees who do not have an email address:(NULL)
+SELECT * FROM employee53
+WHERE email IS NULL;
+
+
+QUERY- To select all employees in department ID 1 and order them by their names:(ORDER BY)
+SELECT * FROM employee53
+WHERE dept_id = 1
+ORDER BY emp_name;
+
+QUERY- alias name for column (ALIAS)
+SELECT emp_name AS employee_name
+FROM employee53;
+
+QUERY- alias name for table (ALIAS)
+SELECT e.emp_name, e.dept_id
+FROM employee53 e;
+ 
+QUERY- alter table and create new column salary 
+ALTER TABLE employee53
+ADD salary NUMBER;
+
+QUERY- salaries for employees 
+UPDATE employee53 SET salary = 50000 WHERE emp_id = 1;
+UPDATE employee53 SET salary = 60000 WHERE emp_id = 2;
+UPDATE employee53 SET salary = 70000 WHERE emp_id = 3;
+UPDATE employee53 SET salary = 55000 WHERE emp_id = 4;
+UPDATE employee53 SET salary = 65000 WHERE emp_id = 5;
+UPDATE employee53 SET salary = 72000 WHERE emp_id = 6;
+UPDATE employee53 SET salary = 48000 WHERE emp_id = 7;
+UPDATE employee53 SET salary = 60000 WHERE emp_id = 8;
+UPDATE employee53 SET salary = 62000 WHERE emp_id = 9;
+UPDATE employee53 SET salary = 75000 WHERE emp_id = 10;
+UPDATE employee53 SET salary = 55000 WHERE emp_id = 11;
+UPDATE employee53 SET salary = 50000 WHERE emp_id = 12;
+UPDATE employee53 SET salary = 63000 WHERE emp_id = 13;
+UPDATE employee53 SET salary = 68000 WHERE emp_id = 14;
+UPDATE employee53 SET salary = 72000 WHERE emp_id = 15;
+
+QUERY-update salary 
+UPDATE employee53
+SET salary = salary * 1.10;
+
+QUERY- If you want to get more information, like the total salary per department, you could modify the QUERY like this:(GROUP BY)
+SELECT dept_id, COUNT(*) AS employee_count, SUM(salary) AS total_salary
+FROM employee53
+GROUP BY dept_id;
+
+QUERY-To retrieve department IDs where the count of employees is greater than 3, you can use the HAVING clause in conjunction with the GROUP BY clause. Here’s how you can do it:(HAVING)
+SELECT dept_id, COUNT(*) AS employee_count
+FROM employee53
+GROUP BY dept_id
+HAVING COUNT(*) > 3;
+
+QUERY-et’s say you want to find the dept_id of departments that have more than 3 employees. You can use a nested query to achieve this. Here’s how you can do it:(NESTED QUERY)
+
+SELECT dept_id
+FROM employee53
+WHERE dept_id IN (
+    SELECT dept_id
+    FROM employee53
+    GROUP BY dept_id
+    HAVING COUNT(*) > 3
+);
+
+
+QUERY- UPDATE THE SALARY OF EMPLOYEE BY 1000
+UPDATE employee53
+SET salary = salary + 1000;
+
+QUERY- Example: Update Employee Salaries Using a Join
+UPDATE employee53 e
+SET e.salary = e.salary + 1000
+WHERE e.dept_id IN (
+    SELECT d.dept_id
+    FROM dept123 d
+    WHERE d.dept_id = 1 
+);
+
+QUERY- Example: Update Employee Salaries with a Self Join
+UPDATE employee53 e1
+SET e1.salary = e1.salary + 1000
+WHERE e1.salary < (
+    SELECT AVG(e2.salary)
+    FROM employee53 e2
+    WHERE e2.dept_id = e1.dept_id
+);
+
+QUERY-(CROSS JOIN)
+
+ Example: Updating Salaries Based on a CROSS JOIN Condition
+Suppose you want to give a raise to all employees who belong to a specific department but also want to utilize CROSS JOIN to demonstrate how it works in the context of your data. You could set up a condition where we assume each department has a specific raise amount.
+
+Create a Temporary Raise Table: For the sake of the example, let's assume we have a raise structure.
+
+
+-- Create a temporary raise table for demonstration
+CREATE TABLE raise_structure (
+    dept_id NUMBER,
+    raise_amount NUMBER
+);
+
+-- Insert some example raise amounts
+INSERT INTO raise_structure (dept_id, raise_amount) VALUES (1, 2000);
+INSERT INTO raise_structure (dept_id, raise_amount) VALUES (2, 1500);
+INSERT INTO raise_structure (dept_id, raise_amount) VALUES (3, 1000);
+
+
+Using CROSS JOIN to Update Salaries: Now, let’s write an UPDATE statement using CROSS JOIN.
+UPDATE employee53 e
+SET e.salary = e.salary + (
+    SELECT r.raise_amount
+    FROM raise_structure r
+    WHERE r.dept_id = e.dept_id
+)
+WHERE e.dept_id IN (SELECT dept_id FROM raise_structure);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
