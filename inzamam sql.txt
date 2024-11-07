@@ -183,16 +183,17 @@ CREATE TABLE product_5053 (
 );
 
 QUERY- INSERT DATA 
-INSERT INTO product (product_id, p_name, price, category) VALUES (1, 'Laptop', 799.00, 'Electronics');
-INSERT INTO product (product_id, p_name, price, category) VALUES (2, 'Smartphone', 499.00, 'Electronics');
-INSERT INTO product (product_id, p_name, price, category) VALUES (3, 'Coffee Maker', 89.00, 'Home & Kitchen');
-INSERT INTO product (product_id, p_name, price, category) VALUES (4, 'Desk Chair', 149.00, 'Furniture');
-INSERT INTO product (product_id, p_name, price, category) VALUES (5, 'Bluetooth Speaker', 59.00, 'Electronics');
-INSERT INTO product (product_id, p_name, price, category) VALUES (6, 'Running Shoes', 120.00, 'Sports');
-INSERT INTO product (product_id, p_name, price, category) VALUES (7, 'Air Conditioner', 499.00, 'Appliances');
-INSERT INTO product (product_id, p_name, price, category) VALUES (8, 'Jacket', 75.00, 'Clothing');
-INSERT INTO product (product_id, p_name, price, category) VALUES (9, 'Digital Camera', 350.00, 'Electronics');
-INSERT INTO product (product_id, p_name, price, category) VALUES (10, 'Microwave', 120.00, 'Appliances');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (1, 'Laptop', 799.00, 'Electronics');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (2, 'Smartphone', 499.00, 'Electronics');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (3, 'Coffee Maker', 89.00, 'Home & Kitchen');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (4, 'Desk Chair', 149.00, 'Furniture');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (5, 'Bluetooth Speaker', 59.00, 'Electronics');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (6, 'Running Shoes', 120.00, 'Sports');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (7, 'Air Conditioner', 499.00, 'Appliances');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (8, 'Jacket', 75.00, 'Clothing');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (9, 'Digital Camera', 350.00, 'Electronics');
+INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (10, 'Microwave', 120.00, 'Appliances');
+
 
 
 
