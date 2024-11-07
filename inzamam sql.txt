@@ -175,7 +175,7 @@ WHERE e.dept_id IN (SELECT dept_id FROM raise_structure);
 
 
 QUERY-  create product table 
-CREATE TABLE product (
+CREATE TABLE product_5053 (
     product_id NUMBER PRIMARY KEY,
     p_name VARCHAR2(100) NOT NULL,
     price NUMBER(10, 2) NOT NULL,
