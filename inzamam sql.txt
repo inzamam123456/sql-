@@ -195,6 +195,170 @@ INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (9, 'Digit
 INSERT INTO product_5053 (product_id, p_name, price, category) VALUES (10, 'Microwave', 120.00, 'Appliances');
 
 
+QUERY- create works table
+CREATE TABLE works (
+    empid NUMBER PRIMARY KEY,
+    company_name VARCHAR2(100) NOT NULL,
+    salary NUMBER(10, 2) NOT NULL
+);
+
+ QUERY- insert data
+INSERT INTO works (empid, company_name, salary) VALUES (1, 'TechCorp', 85000.00);
+INSERT INTO works (empid, company_name, salary) VALUES (2, 'Innovative Solutions', 72000.50);
+INSERT INTO works (empid, company_name, salary) VALUES (3, 'Global Enterprises', 95000.00);
+
+QUERY- TO FIND AVERAGE SALARY 
+SELECT AVG(salary) AS average_salary
+FROM works;
+
+QUERY- CREATE DEPARTMENTS TABLE 
+CREATE TABLE department (
+    dept_id NUMBER PRIMARY KEY,
+    dept_name VARCHAR2(100) NOT NULL,
+    location VARCHAR2(100)
+);
+
+QUERY- Modify the works table by adding columns 
+ALTER TABLE works
+ADD (
+    dept_name VARCHAR2(100),
+    location VARCHAR2(100)
+);
+
+QUERY- If you want to normalize, modify the works table to add dept_id
+ALTER TABLE works
+ADD (
+    dept_id NUMBER
+);
+
+QUERY- Optionally, you can add a foreign key constraint to enforce referential integrity:
+ALTER TABLE works
+ADD CONSTRAINT fk_dept
+FOREIGN KEY (dept_id) REFERENCES department(dept_id);
+
+QUERY- Insert records into the department table:
+INSERT INTO department (dept_id, dept_name, location) VALUES (1, 'Engineering', 'New York');
+INSERT INTO department (dept_id, dept_name, location) VALUES (2, 'Sales', 'Chicago');
+INSERT INTO department (dept_id, dept_name, location) VALUES (3, 'Marketing', 'San Francisco');
+
+QUERY- JOIN TABLES WORKS AND DEPRATMENT TABLES 
+SELECT w.empid, w.company_name, w.salary, d.dept_name, d.location
+FROM works w
+JOIN departments d ON w.dept_id = d.dept_id;
+
+QUERY- UPDATE WORKS TABLE 
+UPDATE works
+SET dept_id = 1
+WHERE empid = 1;  -- Assigning department ID 1 (e.g., Engineering) to employee with empid 1
+
+UPDATE works
+SET dept_id = 2
+WHERE empid = 2;  -- Assigning department ID 2 (e.g., Sales) to employee with empid 2
+
+UPDATE works
+SET dept_id = 3
+WHERE empid = 3;  -- Assigning department ID 3 (e.g., Marketing) to employee with empid 3
+
+
+QUERY - To create a books table with the specified columns — id, title, author, genre, price, and publish_year
+CREATE TABLE books (
+    id NUMBER PRIMARY KEY,         
+    title VARCHAR2(255) NOT NULL,  
+    author VARCHAR2(100) NOT NULL, 
+    genre VARCHAR2(50),            
+    price NUMBER(10, 2),           
+    publish_year NUMBER(4)         
+);
+
+
+QUERY-  insert some sample data
+
+INSERT INTO books (id, title, author, genre, price, publish_year)
+VALUES (1, 'To Kill a Mockingbird', 'Harper Lee', 'Fiction', 15.99, 1960);
+
+INSERT INTO books (id, title, author, genre, price, publish_year)
+VALUES (2, '1984', 'George Orwell', 'Dystopian', 12.99, 1949);
+
+INSERT INTO books (id, title, author, genre, price, publish_year)
+VALUES (3, 'The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 10.99, 1925);
+
+INSERT INTO books (id, title, author, genre, price, publish_year)
+VALUES (4, 'The Catcher in the Rye', 'J.D. Salinger', 'Fiction', 14.99, 1951);
+
+INSERT INTO books (id, title, author, genre, price, publish_year)
+VALUES (5, 'Moby-Dick', 'Herman Melville', 'Adventure', 18.50, 1851);
+
+
+QUERY- To create a cinema table with the columns movie_name, genre, release_date, and ratings
+
+CREATE TABLE cinema (
+    movie_name VARCHAR2(255) NOT NULL,   
+    genre VARCHAR2(50),                   
+    release_date DATE,                     
+    ratings NUMBER(3, 1)                 
+);
+
+QUERY - you can insert some sample movie data
+INSERT INTO cinema (movie_name, genre, release_date, ratings)
+VALUES ('Inception', 'Science Fiction', TO_DATE('2010-07-16', 'YYYY-MM-DD'), 8.8);
+
+INSERT INTO cinema (movie_name, genre, release_date, ratings)
+VALUES ('The Dark Knight', 'Action', TO_DATE('2008-07-18', 'YYYY-MM-DD'), 9.0);
+
+INSERT INTO cinema (movie_name, genre, release_date, ratings)
+VALUES ('The Shawshank Redemption', 'Drama', TO_DATE('1994-09-22', 'YYYY-MM-DD'), 9.3);
+
+INSERT INTO cinema (movie_name, genre, release_date, ratings)
+VALUES ('The Godfather', 'Crime', TO_DATE('1972-03-24', 'YYYY-MM-DD'), 9.2);
+
+INSERT INTO cinema (movie_name, genre, release_date, ratings)
+VALUES ('The Matrix', 'Action', TO_DATE('1999-03-31', 'YYYY-MM-DD'), 8.7);
+
+
+
+QUERY- To select movie names from the cinema table where the ratings are greater than 7 and less than 9
+SELECT movie_name
+FROM cinema
+WHERE ratings > 7 AND ratings < 9;
+
+
+QUERY- CREATE TABLE statement for the table with the desired columns (emp_id, emp_name, dept_name, and timings)
+CREATE TABLE employee_details (
+    emp_id NUMBER PRIMARY KEY,              -- Unique employee ID (Primary Key)
+    emp_name VARCHAR2(100) NOT NULL,         -- Employee name (required)
+    dept_name VARCHAR2(100),                 -- Department name (optional)
+    timings VARCHAR2(20) CHECK (timings IN ('Full-Time', 'Part-Time')) -- Employee timings (restricted to Full-Time or Part-Time)
+);
+
+QUERY-insert data
+INSERT INTO employee_details (emp_id, emp_name, dept_name, timings)
+VALUES (1, 'John Doe', 'Engineering', 'Full-Time');
+
+INSERT INTO employee_details (emp_id, emp_name, dept_name, timings)
+VALUES (2, 'Jane Smith', 'Marketing', 'Part-Time');
+
+INSERT INTO employee_details (emp_id, emp_name, dept_name, timings)
+VALUES (3, 'Michael Johnson', 'Finance', 'Full-Time');
+
+INSERT INTO employee_details (emp_id, emp_name, dept_name, timings)
+VALUES (4, 'Emily Davis', 'HR', 'Part-Time');
+
+INSERT INTO employee_details (emp_id, emp_name, dept_name, timings)
+VALUES (5, 'Chris Lee', 'Engineering', 'Full-Time');
+
+
+QUERY- To select people from the employee_details table who are working only part-time,
+SELECT emp_id, emp_name, dept_name, timings
+FROM employee_details
+WHERE timings = 'Part-Time';
+
+
+
+
+
+
+
+
 
 
 
