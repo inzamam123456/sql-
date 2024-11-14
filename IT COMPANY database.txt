@@ -96,4 +96,24 @@ INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VAL
 
 INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (10, 5, TO_DATE('2021-05-17', 'YYYY-MM-DD'), 'Analyst');
 
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (11, 1, TO_DATE('2022-09-01', 'YYYY-MM-DD'), 'Accountant');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (12, 2, TO_DATE('2023-07-05', 'YYYY-MM-DD'), 'Project Manager');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (13, 3, TO_DATE('2023-04-15', 'YYYY-MM-DD'), 'Developer');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (14, 4, TO_DATE('2021-11-01', 'YYYY-MM-DD'), 'Finance Analyst');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (15, 5, TO_DATE('2022-10-20', 'YYYY-MM-DD'), 'Analyst');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (16, 1, TO_DATE('2022-08-05', 'YYYY-MM-DD'), 'Project Manager');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (17, 2, TO_DATE('2023-02-28', 'YYYY-MM-DD'), 'HR Specialist');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (18, 3, TO_DATE('2022-06-30', 'YYYY-MM-DD'), 'Developer');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (19, 4, TO_DATE('2023-01-18', 'YYYY-MM-DD'), 'Data Scientist');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (20, 5, TO_DATE('2023-09-25', 'YYYY-MM-DD'), 'Analyst');
+
  
