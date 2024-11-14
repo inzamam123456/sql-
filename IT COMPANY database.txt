@@ -1,0 +1,99 @@
+
+QUERY----------Department Table
+CREATE TABLE department_747053 (
+    deptid INT PRIMARY KEY,
+    deptname VARCHAR2(50) NOT NULL
+);
+
+
+
+QUERY---------- Employee Table
+CREATE TABLE employee_747053 (
+    empid INT PRIMARY KEY,
+    first_name VARCHAR2(50) NOT NULL,
+    last_name VARCHAR2(50) NOT NULL,
+    deptid INT,
+    salary DECIMAL(10, 2) NOT NULL,
+    join_day DATE NOT NULL,
+    FOREIGN KEY (deptid) REFERENCES department_747053(deptid)
+);
+
+
+QUERY----------Projects Table
+
+CREATE TABLE projects_747053 (
+    projectid INT PRIMARY KEY,
+    project_name VARCHAR2(100) NOT NULL,
+    budget DECIMAL(15, 2) NOT NULL
+);
+
+
+
+QUERY---------- Employee Projects Table
+CREATE TABLE employee_projects_747053 (
+    empid INT,
+    projectid INT,
+    assigned_date DATE,
+    role VARCHAR2(50) NOT NULL,
+    PRIMARY KEY (empid, projectid),
+    FOREIGN KEY (empid) REFERENCES employee_747053(empid),
+    FOREIGN KEY (projectid) REFERENCES projects_747053(projectid)
+);
+
+QUERY---------- Inserting 20 employees into the employee_747053 table
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (1, 'John', 'Doe', 1, 60000, TO_DATE('2022-01-15', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (2, 'Jane', 'Smith', 2, 50000, TO_DATE('2023-03-22', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (3, 'Emily', 'Johnson', 3, 55000, TO_DATE('2021-07-10', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (4, 'Michael', 'Brown', 4, 45000, TO_DATE('2022-05-01', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (5, 'Alice', 'Williams', 1, 65000, TO_DATE('2022-11-01', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (6, 'David', 'Taylor', 2, 55000, TO_DATE('2023-02-15', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (7, 'Sarah', 'Davis', 3, 57000, TO_DATE('2021-08-10', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (8, 'Robert', 'Martinez', 4, 48000, TO_DATE('2022-12-20', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (9, 'Linda', 'Garcia', 1, 72000, TO_DATE('2023-01-12', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (10, 'James', 'Hernandez', 2, 49000, TO_DATE('2021-05-17', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (11, 'William', 'Lopez', 3, 53000, TO_DATE('2022-09-01', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (12, 'Patricia', 'Gonzalez', 4, 46000, TO_DATE('2023-07-05', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (13, 'Daniel', 'Wilson', 1, 67000, TO_DATE('2023-04-15', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (14, 'Jessica', 'Anderson', 2, 54000, TO_DATE('2021-11-01', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (15, 'Charles', 'Thomas', 3, 56000, TO_DATE('2022-10-20', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (16, 'Mary', 'Jackson', 4, 47500, TO_DATE('2022-08-05', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (17, 'Paul', 'White', 1, 63000, TO_DATE('2023-02-28', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (18, 'Nancy', 'Lewis', 2, 51000, TO_DATE('2022-06-30', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (19, 'Mark', 'Young', 3, 60000, TO_DATE('2023-01-18', 'YYYY-MM-DD'));
+INSERT INTO employee_747053 (empid, first_name, last_name, deptid, salary, join_day) VALUES (20, 'Helen', 'King', 4, 49000, TO_DATE('2023-09-25', 'YYYY-MM-DD'));
+
+
+
+
+QUERY--------- Inserting projects into the projects_747053 table
+INSERT INTO projects_747053 (projectid, project_name, budget) VALUES (1, 'Website', 100000);
+INSERT INTO projects_747053 (projectid, project_name, budget) VALUES (2, 'Mobile App', 120000);
+INSERT INTO projects_747053 (projectid, project_name, budget) VALUES (3, 'Data Migration', 80000);
+INSERT INTO projects_747053 (projectid, project_name, budget) VALUES (4, 'AI', 150000);
+INSERT INTO projects_747053 (projectid, project_name, budget) VALUES (5, 'Marketing', 50000);
+
+
+
+
+QUERY------Insert Data into employee_projects_747053 Table
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (1, 1, TO_DATE('2022-01-20', 'YYYY-MM-DD'), 'Developer');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (2, 2, TO_DATE('2023-04-05', 'YYYY-MM-DD'), 'HR Specialist');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (3, 3, TO_DATE('2021-08-01', 'YYYY-MM-DD'), 'Analyst');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (4, 4, TO_DATE('2022-05-10', 'YYYY-MM-DD'), 'Project Manager');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (5, 5, TO_DATE('2022-11-20', 'YYYY-MM-DD'), 'Developer');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (6, 1, TO_DATE('2023-02-15', 'YYYY-MM-DD'), 'Project Manager');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (7, 2, TO_DATE('2021-08-10', 'YYYY-MM-DD'), 'Finance Analyst');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (8, 3, TO_DATE('2022-12-20', 'YYYY-MM-DD'), 'Data Scientist');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (9, 4, TO_DATE('2023-01-12', 'YYYY-MM-DD'), 'Developer');
+
+INSERT INTO employee_projects_747053 (empid, projectid, assigned_date, role) VALUES (10, 5, TO_DATE('2021-05-17', 'YYYY-MM-DD'), 'Analyst');
+
+ 
